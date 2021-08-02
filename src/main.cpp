@@ -8,22 +8,30 @@
 
 using namespace std;
 
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
 int main()
 {
     cout << "--------   Sort    --------" << endl;
 
 	int arr[] = {2, 4, 1, 6, 5, 9, 7, 8, 3};
 
+    printArray(arr, 9);
+
 //    bubbleSort(arr, 9);
 //    selectionSort(arr, 9);
 //    insertionSort(arr, 9);
-    quickSort(arr, 9);
+    // quickSort(arr, 9);
+    quickSortNonRecursive(arr, 9);
 
-    for (int i = 0; i < 9; i++)
-    {
-        cout << arr[i] << endl;
-    }
-
+    printArray(arr, 9);
 
     cout << "-------- Recursive --------" << endl;
 

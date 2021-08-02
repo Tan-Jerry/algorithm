@@ -1,4 +1,7 @@
+#include <stack>
 #include "../../include/sort.hpp"
+
+using namespace std;
 
 int partition(int arr[], int left, int right)
 {
@@ -50,3 +53,46 @@ void quickSort(int arr[], int n)
     qSort(arr, 0, n - 1);
 }
 
+
+void quickSortNonRecursive(int arr[], int n)
+{
+    if (n <= 1)
+    {
+        return ;
+    }
+
+    stack<int> st;
+    int pivot = partition(arr, 0, n - 1);
+    if (pivot > 1)
+    {
+        st.push(0);
+        st.push(pivot - 1);
+    }
+    if (pivot < n - 2)
+    {
+        st.push(pivot + 1);
+        st.push(n - 1);
+    }
+
+    int left;
+    int right;
+    while(st.size() != 0)
+    {
+        right = st.top();
+        st.pop();
+        left = st.top();
+        st.pop();
+        pivot = partition(arr, left, right);
+
+        if (pivot > left + 1)
+        {
+            st.push(left);
+            st.push(pivot - 1);
+        }
+        if (pivot < right - 1)
+        {
+            st.push(pivot + 1);
+            st.push(right);
+        }
+    }
+}
