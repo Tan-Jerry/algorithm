@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "../../include/sort.hpp"
 
 //void bubble(int arr[], int n)
 //{
@@ -39,8 +39,6 @@ void bubble(int arr[], int n)
 
 void bubbleSort(int arr[], int n)
 {
-    int temp;
-
     for (int j = 0; j < n; j++)
     {
         bubble(arr, n - j);

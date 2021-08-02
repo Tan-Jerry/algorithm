@@ -14,16 +14,16 @@ obj = $(patsubst $(sourceFolder)%.cpp, $(targetFolder)%.o, $(src))
 #		-I： 用于指定头文件位置
 #		-D： 用于定义宏
 #  CXXFLAGS:  C++编译器编译阶段的选项，如 -Wall -O2 -g
-#		-Wall：用于输出警告编译的警告信息
+#		-Wall：用于输出编译的警告信息
 #		-O2: 编译优化等级，0～3，一般用于编译release版本的时候
 #		-g: 编译时包含debug信息
 #  LDFLAGS:  链接库使用的选项，如 -L -l
 CXX = g++
 CPPFLAGS = -I$(headerFolder)
-CXXFLAGS = -g
+CXXFLAGS = -Wall -g
 
 $(target): $(obj)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(obj) -o $(target)
+	$(CXX) $(obj) -o $(target)
 
 #  makefile自动变量
 #  $<:  规则中的第一个依赖
@@ -35,10 +35,10 @@ $(target): $(obj)
 #		-：  标记的shell命令如果执行失败，忽略继续执行后面的任务
 $(targetFolder)%.o: $(sourceFolder)%.cpp
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
 
 #声明为伪目标，make clean就不会做更新比较
 .PHONY: clean
 clean:
-	rm -rf $(targetFolder)* $(targetFolder)debug/*
+	rm -rf $(targetFolder)*

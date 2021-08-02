@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "../../include/sort.hpp"
 
 //void insert(int arr[], int pos)
 //{
@@ -50,7 +50,7 @@ void insert(int arr[], int n)
     }
 }
 
-void insertionSort(int arr[], int n)
+void insertionSort(int arr[], int n, int nn)
 {
     for (int i = 1; i < n; i++)
     {

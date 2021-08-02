@@ -1,12 +1,12 @@
-#include <stdio.h>
+#include "../../include/sort.hpp"
 
 int partition(int arr[], int left, int right)
 {
-    int pivotValue = arr[left];
-    
+    int value = arr[left];
+
     while (left < right)
     {
-        while (left < right && arr[right] >= pivotValue)
+        while (left < right && arr[right] >= value)
         {
             right--;
         }
@@ -15,7 +15,7 @@ int partition(int arr[], int left, int right)
             arr[left] = arr[right];
             left++;
         }
-        while (left < right && arr[left] <= pivotValue)
+        while (left < right && arr[left] <= value)
         {
             left++;
         }
@@ -27,7 +27,7 @@ int partition(int arr[], int left, int right)
 
         if (left == right)
         {
-            arr[left] = pivotValue;
+            arr[left] = value;
         }
     }
 

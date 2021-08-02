@@ -1,5 +1,8 @@
 #include <iostream>
 
+// when preprocessing use -I to indentify the header folder
+// #include "sort.hpp"
+// #include "recursive.hpp"
 #include "../include/sort.hpp"
 #include "../include/recursive.hpp"
 
