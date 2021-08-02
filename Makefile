@@ -3,7 +3,7 @@ headerFolder = ./include/
 sourceFolder = ./src/
 targetFolder = ./build/
 
-target = $(targetFolder)haha
+target = $(targetFolder)app
 
 src = $(sourceFolder)main.cpp $(wildcard $(sourceFolder)*/*.cpp)
 obj = $(patsubst $(sourceFolder)%.cpp, $(targetFolder)%.o, $(src))
@@ -20,9 +20,10 @@ obj = $(patsubst $(sourceFolder)%.cpp, $(targetFolder)%.o, $(src))
 #  LDFLAGS:  链接库使用的选项，如 -L -l
 CXX = g++
 CPPFLAGS = -I$(headerFolder)
+CXXFLAGS = -g
 
 $(target): $(obj)
-	$(CXX) $(CPPFLAGS) $(obj) -o $(target)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(obj) -o $(target)
 
 #  makefile自动变量
 #  $<:  规则中的第一个依赖
@@ -34,10 +35,10 @@ $(target): $(obj)
 #		-：  标记的shell命令如果执行失败，忽略继续执行后面的任务
 $(targetFolder)%.o: $(sourceFolder)%.cpp
 	@mkdir -p $(@D)
-	$(CXX) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
 #声明为伪目标，make clean就不会做更新比较
 .PHONY: clean
 clean:
-	rm -rf $(targetFolder)haha $(targetFolder)debug/*
+	rm -rf $(targetFolder)* $(targetFolder)debug/*
