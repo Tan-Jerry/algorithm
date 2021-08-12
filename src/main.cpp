@@ -22,14 +22,17 @@ int main()
     cout << "--------   Sort    --------" << endl;
 
 	int arr[] = {2, 4, 1, 6, 5, 9, 7, 8, 3};
+    //int arr[] = {5, 6, 7, 8, 9, 1, 2, 3, 4};
 
     printArray(arr, 9);
 
 //    bubbleSort(arr, 9);
 //    selectionSort(arr, 9);
 //    insertionSort(arr, 9);
-    // quickSort(arr, 9);
-    quickSortNonRecursive(arr, 9);
+//    quickSort(arr, 9);
+//    quickSortNonRecursive(arr, 9);
+//    heapSort(arr, 9);
+    mergeSort(arr, 0, 8);
 
     printArray(arr, 9);
 
