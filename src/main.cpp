@@ -1,4 +1,8 @@
+#include <cstdlib>
+#include <ctime>
+
 #include <iostream>
+#include <vector>
 
 // when preprocessing use -I to indentify the header folder
 // #include "sort.hpp"
@@ -17,11 +21,27 @@ void printArray(int arr[], int n)
     cout << endl;
 }
 
+int* randArray(int n, int rangeL, int rangeR)
+{
+    assert(rangeL <= rangeR);
+
+    int *arr = new int[n];
+
+    srand(time(NULL));
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = rand() % (rangeR - rangeL + 1) + rangeL;
+    }
+
+    return arr;
+}
+
 int main()
 {
     cout << "--------   Sort    --------" << endl;
 
-	int arr[] = {2, 4, 1, 6, 5, 9, 7, 8, 3};
+    int *arr = randArray(9, 1, 9);
+	// int arr[] = {2, 4, 1, 6, 5, 9, 7, 8, 3};
     //int arr[] = {5, 6, 7, 8, 9, 1, 2, 3, 4};
 
     printArray(arr, 9);
@@ -32,9 +52,15 @@ int main()
 //    quickSort(arr, 9);
 //    quickSortNonRecursive(arr, 9);
 //    heapSort(arr, 9);
-    mergeSort(arr, 0, 8);
+//    mergeSort(arr, 0, 8);
+    shellSort(arr, 9);
 
     printArray(arr, 9);
+
+    if (arr != nullptr)
+    {
+        delete [] arr;
+    }
 
     cout << "-------- Recursive --------" << endl;
 

@@ -10,3 +10,5 @@ void heapSort(int arr[], int n);
 
 void merge(int arr[], int L, int M, int R);
 void mergeSort(int arr[], int L, int R);
+
+void shellSort(int arr[], int n);
