@@ -1,6 +1,6 @@
 #include <iostream>
 
-using namespace std;
+#include "../../include/recursive.hpp"
 
 int fibonacci(int n)
 {
@@ -47,5 +47,24 @@ void printFibonacci(int n)
     }
 }
 
+int fibonacci_DP(int n, vector<int>& vecResult)
+{
+    if (vecResult[n - 1] != 0)
+    {
+        return vecResult[n - 1];
+    }
 
+    if (n == 1 || n == 2)
+    {
+        vecResult[n - 1] = 1;
+    }
+    else
+    {
+        vecResult[n - 1] = fibonacci_DP(n - 1, vecResult) + fibonacci_DP(n - 2, vecResult);
+    }
+    
+    cout << n << ": " << vecResult[n - 1] << endl;
+
+    return vecResult[n - 1];
+}
 // 1, 1, 2, 3, 5, 8, 13, 21, 34

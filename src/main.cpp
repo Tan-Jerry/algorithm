@@ -67,7 +67,13 @@ int main()
     int res = fibonacci(9);
     cout << res << endl;
 
+    vector<int> tempRes(9, 0);
+    int resdd = fibonacci_DP(9, tempRes);
+    cout << resdd << endl;
+
     printFibonacci(9);
 
+    cout << sizeof(int) << endl;
+    
     return 0;
 }
