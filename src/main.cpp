@@ -9,6 +9,7 @@
 // #include "recursive.hpp"
 #include "../include/sort.hpp"
 #include "../include/recursive.hpp"
+#include "../include/search.hpp"
 
 using namespace std;
 
@@ -74,6 +75,10 @@ int main()
     printFibonacci(9);
 
     cout << sizeof(int) << endl;
-    
+
+    int sortArr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int bsRes = binarySearch(sortArr, 9, 11);
+    cout << bsRes << endl;
+
     return 0;
 }
